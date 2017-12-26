@@ -14,20 +14,23 @@
  * limitations under the License.
  */
 
-package com.jian.explosion;
+package com.jian.explosion.utils;
 
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import android.content.res.Resources;
 
 /**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ * 说明：
+ * 作者：杨健
+ * 时间：2017/12/26.
  */
-public class ExampleUnitTest {
-    @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+
+public class UIUtils {
+
+    public static int dp2px(double dpi) {
+        return (int) (Resources.getSystem().getDisplayMetrics().density * dpi + 0.5f);
+    }
+
+    public static int statusBarHeignth() {
+        return dp2px(25);
     }
 }

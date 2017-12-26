@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (C) 2018 Jian Yang
   ~
@@ -16,7 +15,8 @@
   -->
 
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <string name="app_name">爆炸破碎效果</string>
+    <string name="title">破碎效果演示</string>
+    <string name="title_disappear">消失后不再出现</string>
+    <string name="title_disappear_and_appear">消失后再出现</string>
 </resources>
