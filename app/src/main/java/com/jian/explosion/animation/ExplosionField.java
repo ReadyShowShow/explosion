@@ -51,9 +51,7 @@ public class ExplosionField extends View {
     }
 
     /**
-     * 爆破
-     *
-     * @param view 使得该view爆破
+     * 执行爆破破碎动画
      */
     public void explode(final View view, final AnimatorListenerAdapter listener) {
         Rect rect = new Rect();
@@ -62,6 +60,7 @@ public class ExplosionField extends View {
 
         animator = new ExplosionAnimator(this, createBitmapFromView(view), rect);
 
+        // 接口回调
         animator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -95,17 +94,14 @@ public class ExplosionField extends View {
     }
 
     private Bitmap createBitmapFromView(View view) {
-        /*
-         * 为什么屏蔽以下代码段？
-         * 如果ImageView直接得到位图，那么当它设置背景（backgroud)时，不会读取到背景颜色
-         */
+//         为什么屏蔽以下代码段？
+//         如果ImageView直接得到位图，那么当它设置背景（backgroud)时，不会读取到背景颜色
 //        if (view instanceof ImageView) {
 //            Drawable drawable = ((ImageView)view).getDrawable();
 //            if (drawable != null && drawable instanceof BitmapDrawable) {
 //                return ((BitmapDrawable) drawable).getBitmap();
 //            }
 //        }
-
         //view.clearFocus(); //不同焦点状态显示的可能不同——（azz:不同就不同有什么关系？）
 
         Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
@@ -114,14 +110,15 @@ public class ExplosionField extends View {
             synchronized (mCanvas) {
                 mCanvas.setBitmap(bitmap);
                 view.draw(mCanvas);
-                mCanvas.setBitmap(null); //清除引用
+                // 清除引用
+                mCanvas.setBitmap(null);
             }
         }
         return bitmap;
     }
 
     /**
-     * 给Activity加上全屏覆盖的ExplosionField
+     * 将创建的ExplosionField添加到Activity上
      */
     private void attach2Activity(Activity activity) {
         ViewGroup rootView = activity.findViewById(Window.ID_ANDROID_CONTENT);
@@ -131,6 +128,9 @@ public class ExplosionField extends View {
         rootView.addView(this, lp);
     }
 
+    /**
+     * 将ExplosionField从Activity上移除
+     */
     private void removeFromActivity(Activity activity) {
         ViewGroup rootView = activity.findViewById(Window.ID_ANDROID_CONTENT);
         rootView.removeView(this);

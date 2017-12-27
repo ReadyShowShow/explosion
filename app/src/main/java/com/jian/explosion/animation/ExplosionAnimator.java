@@ -37,56 +37,60 @@ class ExplosionAnimator extends ValueAnimator {
     private View mContainer;
 
     public ExplosionAnimator(View view, Bitmap bitmap, Rect bound) {
-
-        mPaint = new Paint();
-        mContainer = view;
-
         setFloatValues(0.0f, 1.0f);
         setDuration(DEFAULT_DURATION);
 
+        mPaint = new Paint();
+        mContainer = view;
         mParticles = generateParticles(bitmap, bound);
     }
 
+    // 生成粒子，按行按列生成全部粒子
     private ParticleModel[][] generateParticles(Bitmap bitmap, Rect bound) {
         int w = bound.width();
         int h = bound.height();
 
-        int partW_Count = w / ParticleModel.PART_WH; //横向个数
-        int partH_Count = h / ParticleModel.PART_WH; //竖向个数
+        // 横向粒子的个数
+        int horizontalCount = w / ParticleModel.PART_WH;
+        // 竖向粒子的个数
+        int verticalCount = h / ParticleModel.PART_WH;
 
-        int bitmap_part_w = bitmap.getWidth() / partW_Count;
-        int bitmap_part_h = bitmap.getHeight() / partH_Count;
+        // 粒子宽度
+        int bitmapPartWidth = bitmap.getWidth() / horizontalCount;
+        // 粒子高度
+        int bitmapPartHeight = bitmap.getHeight() / verticalCount;
 
-        ParticleModel[][] particles = new ParticleModel[partH_Count][partW_Count];
-        Point point = null;
-        for (int row = 0; row < partH_Count; row++) { //行
-            for (int column = 0; column < partW_Count; column++) { //列
+        ParticleModel[][] particles = new ParticleModel[verticalCount][horizontalCount];
+        for (int row = 0; row < verticalCount; row++) {
+            for (int column = 0; column < horizontalCount; column++) {
                 //取得当前粒子所在位置的颜色
-                int color = bitmap.getPixel(column * bitmap_part_w, row * bitmap_part_h);
+                int color = bitmap.getPixel(column * bitmapPartWidth, row * bitmapPartHeight);
 
-                point = new Point(column, row); //x是列，y是行
-
-                particles[row][column] = ParticleModel.generateParticle(color, bound, point);
+                Point point = new Point(column, row);
+                particles[row][column] = new ParticleModel(color, bound, point);
             }
         }
-
         return particles;
     }
 
+    // 由view调用，在View上绘制全部的粒子
     void draw(Canvas canvas) {
-        if (!isStarted()) { //动画结束时停止
+        // 动画结束时停止
+        if (!isStarted()) {
             return;
         }
+        // 遍历粒子，并绘制在View上
         for (ParticleModel[] particle : mParticles) {
             for (ParticleModel p : particle) {
                 p.advance((Float) getAnimatedValue());
                 mPaint.setColor(p.color);
-//                mPaint.setAlpha((int) (255 * p.alpha)); //只是这样设置，透明色会显示为黑色
-                mPaint.setAlpha((int) (Color.alpha(p.color) * p.alpha)); //这样透明颜色就不是黑色了
+                // 错误的设置方式只是这样设置，透明色会显示为黑色
+                // mPaint.setAlpha((int) (255 * p.alpha));
+                // 正确的设置方式，这样透明颜色就不是黑色了
+                mPaint.setAlpha((int) (Color.alpha(p.color) * p.alpha));
                 canvas.drawCircle(p.cx, p.cy, p.radius, mPaint);
             }
         }
-
         mContainer.invalidate();
     }
 

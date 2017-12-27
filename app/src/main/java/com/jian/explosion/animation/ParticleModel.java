@@ -27,41 +27,36 @@ import java.util.Random;
  * 时间：2017/12/26.
  */
 class ParticleModel {
-    static final int PART_WH = 8; //默认小球宽高
-
-    //原本的值（不可变）
-//    float originCX;
-//    float originCY;
-//    float originRadius;
-
-    //实际的值（可变）
-    float cx; //center x of circle
-    float cy; //center y of circle
-    float radius;
-
-    int color;
-    float alpha;
-
+    // 默认小球宽高
+    static final int PART_WH = 8;
+    // 随机数，随机出位置和大小
     static Random random = new Random();
-
+    //center x of circle
+    float cx;
+    //center y of circle
+    float cy;
+    // 半径
+    float radius;
+    // 颜色
+    int color;
+    // 透明度
+    float alpha;
+    // 整体边界
     Rect mBound;
 
-    static ParticleModel generateParticle(int color, Rect bound, Point point) {
+    ParticleModel(int color, Rect bound, Point point) {
         int row = point.y; //行是高
         int column = point.x; //列是宽
 
-        ParticleModel particle = new ParticleModel();
-        particle.mBound = bound;
-        particle.color = color;
-        particle.alpha = 1f;
-
-        particle.radius = PART_WH;
-        particle.cx = bound.left + PART_WH * column;
-        particle.cy = bound.top + PART_WH * row;
-
-        return particle;
+        this.mBound = bound;
+        this.color = color;
+        this.alpha = 1f;
+        this.radius = PART_WH;
+        this.cx = bound.left + PART_WH * column;
+        this.cy = bound.top + PART_WH * row;
     }
 
+    // 每一步动画都得重新计算出自己的状态值
     void advance(float factor) {
         cx = cx + factor * random.nextInt(mBound.width()) * (random.nextFloat() - 0.5f);
         cy = cy + factor * random.nextInt(mBound.height() / 2);
