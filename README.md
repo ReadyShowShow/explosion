@@ -1,6 +1,9 @@
 # 💥Android爆炸破碎动画💥
-  这个破碎动画，是一种类似小米系统删除应用时的爆炸破碎效果的动画。
+
+这个破碎动画，是一种类似小米系统删除应用时的爆炸破碎效果的动画。
+
 ## 效果图展示
+
 先来看下是怎样的动效，要是感觉不是理想的学习目标，就跳过，避免浪费大家的时间。🙂
 
 ![ezgif-2-a640aae0e5.gif](http://upload-images.jianshu.io/upload_images/7802495-a0b5bb591652949b.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -28,7 +31,7 @@ new ExplosionField(this).explode(view, null))
 |   |   `-- ParticleModel.java(每个破碎后的粒子的model，颜色、位置、大小等)
 |   `-- utils
 |       `-- UIUtils.java(计算状态栏高度的工具类)
-`-- tree.txt
+`-- architecture.md
 ```
 
 ## 庖丁解牛
@@ -379,5 +382,7 @@ public class UIUtils {
 }
 ```
 ## 结束
-源码👉<https://github.com/ReadyShowShow/explosion>
+
+源码在这里👉<https://github.com/ReadyShowShow/explosion>
+
 如果有优化的建议与意见，欢迎大家提[Issues](https://github.com/ReadyShowShow/explosion/issues)或者邮箱<ReadyShowShow@gmail.com>
