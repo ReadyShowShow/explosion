@@ -19,6 +19,8 @@ package com.jian.explosion.animation;
 import android.graphics.Point;
 import android.graphics.Rect;
 
+import com.jian.explosion.utils.UIUtils;
+
 import java.util.Random;
 
 /**
@@ -28,7 +30,7 @@ import java.util.Random;
  */
 class ParticleModel {
     // 默认小球宽高
-    static final int PART_WH = 8;
+    static final int PART_WH = UIUtils.dp2px(5);
     // 随机数，随机出位置和大小
     static Random random = new Random();
     //center x of circle
