@@ -19,4 +19,5 @@
     <string name="title">Explosion demo</string>
     <string name="title_disappear">explosion then disappear</string>
     <string name="title_disappear_and_appear">explosion then disappear and appear</string>
+    <string name="github"><u>https://github.com/ReadyShowShow/explosion</u></string>
 </resources>

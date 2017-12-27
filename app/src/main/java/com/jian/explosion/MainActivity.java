@@ -18,6 +18,8 @@ package com.jian.explosion;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
 
         setSelfAndChildDisappearOnClick(findViewById(R.id.title_disappear_ll));
         setSelfAndChildDisappearAndAppearOnClick(findViewById(R.id.title_disappear_and_appear_ll));
+
+        findViewById(R.id.github_tv).setOnClickListener((view) -> {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            Uri content_url = Uri.parse(getString(R.string.github));
+            intent.setData(content_url);
+            startActivity(intent);
+        });
     }
 
     private void setSelfAndChildDisappearOnClick(final View view) {
