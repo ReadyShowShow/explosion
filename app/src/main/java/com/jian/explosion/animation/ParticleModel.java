@@ -26,7 +26,7 @@ import java.util.Random;
  * 作者：Jian
  * 时间：2017/12/26.
  */
-class Particle {
+class ParticleModel {
     static final int PART_WH = 8; //默认小球宽高
 
     //原本的值（不可变）
@@ -46,11 +46,11 @@ class Particle {
 
     Rect mBound;
 
-    static Particle generateParticle(int color, Rect bound, Point point) {
+    static ParticleModel generateParticle(int color, Rect bound, Point point) {
         int row = point.y; //行是高
         int column = point.x; //列是宽
 
-        Particle particle = new Particle();
+        ParticleModel particle = new ParticleModel();
         particle.mBound = bound;
         particle.color = color;
         particle.alpha = 1f;

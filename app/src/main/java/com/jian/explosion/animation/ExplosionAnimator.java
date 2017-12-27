@@ -32,7 +32,7 @@ import android.view.View;
  */
 class ExplosionAnimator extends ValueAnimator {
     private static final int DEFAULT_DURATION = 1500;
-    private Particle[][] mParticles;
+    private ParticleModel[][] mParticles;
     private Paint mPaint;
     private View mContainer;
 
@@ -47,17 +47,17 @@ class ExplosionAnimator extends ValueAnimator {
         mParticles = generateParticles(bitmap, bound);
     }
 
-    private Particle[][] generateParticles(Bitmap bitmap, Rect bound) {
+    private ParticleModel[][] generateParticles(Bitmap bitmap, Rect bound) {
         int w = bound.width();
         int h = bound.height();
 
-        int partW_Count = w / Particle.PART_WH; //横向个数
-        int partH_Count = h / Particle.PART_WH; //竖向个数
+        int partW_Count = w / ParticleModel.PART_WH; //横向个数
+        int partH_Count = h / ParticleModel.PART_WH; //竖向个数
 
         int bitmap_part_w = bitmap.getWidth() / partW_Count;
         int bitmap_part_h = bitmap.getHeight() / partH_Count;
 
-        Particle[][] particles = new Particle[partH_Count][partW_Count];
+        ParticleModel[][] particles = new ParticleModel[partH_Count][partW_Count];
         Point point = null;
         for (int row = 0; row < partH_Count; row++) { //行
             for (int column = 0; column < partW_Count; column++) { //列
@@ -66,7 +66,7 @@ class ExplosionAnimator extends ValueAnimator {
 
                 point = new Point(column, row); //x是列，y是行
 
-                particles[row][column] = Particle.generateParticle(color, bound, point);
+                particles[row][column] = ParticleModel.generateParticle(color, bound, point);
             }
         }
 
@@ -77,8 +77,8 @@ class ExplosionAnimator extends ValueAnimator {
         if (!isStarted()) { //动画结束时停止
             return;
         }
-        for (Particle[] particle : mParticles) {
-            for (Particle p : particle) {
+        for (ParticleModel[] particle : mParticles) {
+            for (ParticleModel p : particle) {
                 p.advance((Float) getAnimatedValue());
                 mPaint.setColor(p.color);
 //                mPaint.setAlpha((int) (255 * p.alpha)); //只是这样设置，透明色会显示为黑色
