@@ -1,9 +1,12 @@
 # 💥Android爆炸破碎动画💥
   这个破碎动画，是一种类似小米系统删除应用时的爆炸破碎效果的动画。
 ## 效果图展示
-  先来看下是怎样的动效，要是感觉不是理想的学习目标，就跳过，避免浪费大家的时间。🙂
+先来看下是怎样的动效，要是感觉不是理想的学习目标，就跳过，避免浪费大家的时间。🙂
+
 ![ezgif-2-a640aae0e5.gif](http://upload-images.jianshu.io/upload_images/7802495-a0b5bb591652949b.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 源码在这里👉<https://github.com/ReadyShowShow/explosion>
+
 解析在这里👉<http://www.jianshu.com/p/11bed7dabe2c>
 ## 一行代码即可调用该动画
 ```
