@@ -34,26 +34,31 @@ import com.jian.explosion.animation.ExplosionField;
  */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * 加载布局文件，添加点击事件
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         initViewsClick();
     }
 
+    /**
+     * 添加点击事件的实现
+     */
     private void initViewsClick() {
+        // 为单个View添加点击事件
         final View title = findViewById(R.id.title_tv);
         title.setOnClickListener(v ->
                 new ExplosionField(MainActivity.this).explode(title, null));
 
+        // 为中间3个View添加点击事件
         setSelfAndChildDisappearOnClick(findViewById(R.id.title_disappear_ll));
+        // 为下面3个View添加点击事件
         setSelfAndChildDisappearAndAppearOnClick(findViewById(R.id.title_disappear_and_appear_ll));
 
+        // 跳转到github网页的点击事件
         findViewById(R.id.github_tv).setOnClickListener((view) -> {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
@@ -63,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * 为自己以及子View添加破碎动画，动画结束后，把View消失掉
+     * @param view 可能是ViewGroup的view
+     */
     private void setSelfAndChildDisappearOnClick(final View view) {
         if (view instanceof ViewGroup) {
             ViewGroup viewGroup = (ViewGroup) view;
@@ -82,6 +91,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 为自己以及子View添加破碎动画，动画结束后，View自动出现
+     * @param view 可能是ViewGroup的view
+     */
     private void setSelfAndChildDisappearAndAppearOnClick(final View view) {
         if (view instanceof ViewGroup) {
             ViewGroup viewGroup = (ViewGroup) view;
