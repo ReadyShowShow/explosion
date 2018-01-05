@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ Copyright (C) 2018 Jian Yang
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,23 +16,28 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.jian.activity.MainActivity">
+    android:gravity="right">
 
-    <Button
-        android:id="@+id/main_explosion_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="爆破动效" />
+    <TextView
+        android:id="@+id/item_shorthand_phrase_detail"
+        android:layout_width="145dp"
+        android:layout_height="match_parent"
+        android:background="@color/c3_7"
+        android:gravity="center"
+        android:text="详解"
+        android:textColor="@color/c4_1"
+        android:textSize="@dimen/t1" />
 
-    <Button
-        android:id="@+id/main_drag_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="左滑删除" />
-
+    <TextView
+        android:id="@+id/item_shorthand_difficult"
+        android:layout_width="212dp"
+        android:layout_height="match_parent"
+        android:background="@color/c2_4"
+        android:gravity="center"
+        android:text="设为难词"
+        android:textColor="@color/c4_1"
+        android:textSize="@dimen/t1" />
 </LinearLayout>

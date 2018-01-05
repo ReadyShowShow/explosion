@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jian.explosion;
+package com.jian.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jian.R;
 import com.jian.explosion.animation.ExplosionField;
 
 /**
@@ -32,7 +33,7 @@ import com.jian.explosion.animation.ExplosionField;
  * 作者：Jian
  * 时间：2017/12/26.
  */
-public class MainActivity extends AppCompatActivity {
+public class ExplosionActivity extends AppCompatActivity {
 
     /**
      * 加载布局文件，添加点击事件
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_explosion);
         initViewsClick();
     }
 
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         // 为单个View添加点击事件
         final View title = findViewById(R.id.title_tv);
         title.setOnClickListener(v ->
-                new ExplosionField(MainActivity.this).explode(title, null));
+                new ExplosionField(ExplosionActivity.this).explode(title, null));
 
         // 为中间3个View添加点击事件
         setSelfAndChildDisappearOnClick(findViewById(R.id.title_disappear_ll));
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             view.setOnClickListener(v ->
-                    new ExplosionField(MainActivity.this).explode(view,
+                    new ExplosionField(ExplosionActivity.this).explode(view,
                             new AnimatorListenerAdapter() {
                                 @Override
                                 public void onAnimationEnd(Animator animation) {
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             view.setOnClickListener(v ->
-                    new ExplosionField(MainActivity.this).explode(view, null));
+                    new ExplosionField(ExplosionActivity.this).explode(view, null));
         }
     }
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2018 Jian Yang
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_shorthand_word_content"
+    android:layout_width="match_parent"
+    android:layout_height="118dp"
+    android:background="@color/c2">
+
+    <ImageView
+        android:id="@+id/item_shorthand_familiar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/global_margin_horizontal"
+        android:layout_gravity="right|center_vertical"
+        android:background="@drawable/ic_select_word_weak"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <com.hqyxjy.word.widget.EnglishTextView
+        android:id="@+id/item_shorthand_word"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/global_margin_horizontal"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="baseball player"
+        android:textColor="@color/c3_6"
+        android:textSize="@dimen/normal_45_33sp" />
+
+    <TextView
+        android:id="@+id/item_shorthand_phrase"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="467dp"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="棒球女运动员"
+        android:textColor="@color/c3_1"
+        android:textSize="@dimen/t1" />
+</FrameLayout>

@@ -2,7 +2,6 @@
 ```
 ./
 |-- explosion
-|   |-- MainActivity.java (测试爆炸破碎动效的主界面)
 |   |-- animation(爆炸破碎动效有关的类均在这里)
 |   |   |-- ExplosionAnimator.java(爆炸动画)
 |   |   |-- ExplosionField.java(爆炸破碎动画所依赖的View)
