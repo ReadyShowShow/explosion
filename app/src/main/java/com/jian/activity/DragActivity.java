@@ -30,10 +30,7 @@ import com.jian.widget.RecycleViewDivider;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-
 public class DragActivity extends AppCompatActivity {
-    @BindView(R.id.activity_word_list)
     DragRecyclerView wordList;
 
     List<WordItemViewModel> mockData;
@@ -42,6 +39,7 @@ public class DragActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drag);
+        wordList = findViewById(R.id.activity_word_list);
         mockData();
         showListView();
     }

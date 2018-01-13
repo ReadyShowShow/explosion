@@ -22,7 +22,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.jian.R;
 
-import butterknife.OnClick;
 
 /**
  * 说明：测试的入口界面
@@ -38,17 +37,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initClicks();
     }
 
-    @OnClick(R.id.main_explosion_btn)
-    public void testExplosion() {
-        Intent i = new Intent(this, ExplosionActivity.class);
-        this.startActivity(i);
-    }
-
-    @OnClick(R.id.main_drag_btn)
-    public void testDrag() {
-        Intent i = new Intent(this, ExplosionActivity.class);
-        this.startActivity(i);
+    private void initClicks() {
+        findViewById(R.id.main_explosion_btn).setOnClickListener(v -> {
+            Intent i = new Intent(this, ExplosionActivity.class);
+            this.startActivity(i);
+        });
+        findViewById(R.id.main_drag_btn).setOnClickListener(v -> {
+            Intent i = new Intent(this, DragActivity.class);
+            this.startActivity(i);
+        });
     }
 }

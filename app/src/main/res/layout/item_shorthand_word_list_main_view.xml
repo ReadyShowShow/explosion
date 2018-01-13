@@ -32,7 +32,7 @@
         android:visibility="gone"
         tools:visibility="visible" />
 
-    <com.hqyxjy.word.widget.EnglishTextView
+    <TextView
         android:id="@+id/item_shorthand_word"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -41,7 +41,7 @@
         android:singleLine="true"
         android:text="baseball player"
         android:textColor="@color/c3_6"
-        android:textSize="@dimen/normal_45_33sp" />
+        android:textSize="45.33sp" />
 
     <TextView
         android:id="@+id/item_shorthand_phrase"

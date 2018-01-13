@@ -22,16 +22,18 @@
     android:orientation="vertical"
     tools:context="com.jian.activity.MainActivity">
 
-    <Button
+    <TextView
         android:id="@+id/main_explosion_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="爆破动效" />
+        android:text="爆破动效"
+        android:textSize="30sp" />
 
-    <Button
+    <TextView
         android:id="@+id/main_drag_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="左滑删除" />
+        android:text="左滑删除"
+        android:textSize="30sp" />
 
 </LinearLayout>

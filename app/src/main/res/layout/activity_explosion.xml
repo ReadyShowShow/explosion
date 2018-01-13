@@ -35,6 +35,7 @@
             android:padding="10dp"
             android:text="@string/title"
             android:textSize="25sp"
+            android:onClick=""
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
