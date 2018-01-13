@@ -19,8 +19,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_shorthand_word_content"
     android:layout_width="match_parent"
-    android:layout_height="118dp"
-    android:background="@color/c2">
+    android:layout_height="68dp">
 
     <ImageView
         android:id="@+id/item_shorthand_familiar"
@@ -41,13 +40,14 @@
         android:singleLine="true"
         android:text="baseball player"
         android:textColor="@color/c3_6"
-        android:textSize="45.33sp" />
+        android:textSize="@dimen/t1" />
 
     <TextView
         android:id="@+id/item_shorthand_phrase"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginLeft="467dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="right"
         android:gravity="center"
         android:singleLine="true"
         android:text="棒球女运动员"

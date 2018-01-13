@@ -47,7 +47,7 @@ public class DragActivity extends AppCompatActivity {
     private void mockData() {
         mockData = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            mockData.add(new WordItemViewModel("word" + i, "chinese" + i, i % 4 == 0, i % 3 == 1, i % 2 == 0));
+            mockData.add(new WordItemViewModel("word" + i, "单词" + i));
         }
     }
 
@@ -61,7 +61,7 @@ public class DragActivity extends AppCompatActivity {
         ));
         WordAdapter adapter = new WordAdapter(this);
         wordList.setAdapter(adapter);
-        adapter.setDataSet(mockData, true);
+        adapter.setDataSet(mockData);
 
     }
 }

@@ -16,12 +16,18 @@
 
 package com.jian.activity.adapter;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
+import android.widget.ViewAnimator;
 
 import com.jian.R;
+import com.jian.explosion.animation.ExplosionField;
 import com.jian.utils.ToastUtil;
 import com.jian.widget.DragRecyclerView;
 
@@ -30,9 +36,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static android.util.TypedValue.COMPLEX_UNIT_PX;
-
 
 public class WordAdapter extends DragRecyclerView.Adapter<WordAdapter.WordListViewHolder> {
     protected Context mContext;
@@ -44,7 +47,6 @@ public class WordAdapter extends DragRecyclerView.Adapter<WordAdapter.WordListVi
     public WordItemViewModel selectedViewModel;
 
     protected List<WordItemViewModel> dataSet = new ArrayList<>();
-    private boolean noAudioNoFamiliarOnFirstClick;
 
     public WordAdapter(Context context) {
         mContext = context;
@@ -71,9 +73,8 @@ public class WordAdapter extends DragRecyclerView.Adapter<WordAdapter.WordListVi
         return dataSet;
     }
 
-    public void setDataSet(List<WordItemViewModel> list, boolean noAudioFirstClick) {
+    public void setDataSet(List<WordItemViewModel> list) {
         this.dataSet = list;
-        this.noAudioNoFamiliarOnFirstClick = noAudioFirstClick;
     }
 
     public class WordListViewHolder extends DragRecyclerView.ViewHolder {
@@ -85,8 +86,6 @@ public class WordAdapter extends DragRecyclerView.Adapter<WordAdapter.WordListVi
         View phraseDetailV;
         @BindView(R.id.item_shorthand_difficult)
         View difficultV;
-        @BindView(R.id.item_shorthand_familiar)
-        View familiarV;
 
         Context context;
 
@@ -103,11 +102,8 @@ public class WordAdapter extends DragRecyclerView.Adapter<WordAdapter.WordListVi
 
             wordTv.setText(model.getEnglish());
             phraseTv.setText(model.getChinese());
-            phraseTv.setTextSize(COMPLEX_UNIT_PX, model.getChinese().length() > 6 ? 39 : 54);
             resetEnglishWordTextStyle(model.isSelected());
             phraseTv.setVisibility(model.isShowPhrase() ? View.VISIBLE : View.INVISIBLE);
-            familiarV.setVisibility(!noAudioNoFamiliarOnFirstClick && model.isFamiliar()
-                    ? View.VISIBLE : View.INVISIBLE);
 
             resetClickListener();
         }
@@ -117,10 +113,6 @@ public class WordAdapter extends DragRecyclerView.Adapter<WordAdapter.WordListVi
                 if (selectedViewModel != null && selectedViewModel != model) {
                     selectedViewModel.setSelected(false);
                     selectedViewModel.setShowPhrase(false);
-                }
-
-                if (!noAudioNoFamiliarOnFirstClick || selectedViewModel == model) {
-                    ToastUtil.toast(context, model.getEnglish() + "要发音");
                 }
 
                 selectedViewModel = model;
@@ -144,13 +136,22 @@ public class WordAdapter extends DragRecyclerView.Adapter<WordAdapter.WordListVi
                 itemView.close(true);
             });
             difficultV.setOnClickListener(v -> {
-                ToastUtil.toast(context, "标记难词：" + model.getEnglish());
-                itemView.close(true);
+                ToastUtil.toast(context, "移走：" + model.getEnglish());
+                phraseTv.setVisibility(View.VISIBLE);
+                itemView.setEnabled(false);
+                itemView.setAnimation(new TranslateAnimation(0, 100, 0, 0));
+                new ExplosionField(context).explode(itemView, new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        dataSet.remove(model);
+                        notifyDataSetChanged();
+                    }
+                });
             });
         }
 
         private void resetEnglishWordTextStyle(boolean isSelected) {
-            wordTv.setTextSize(COMPLEX_UNIT_PX, isSelected ? 78 : 68);
             wordTv.setTextColor(context.getResources().getColor(isSelected ? R.color.c3_1 : R.color.c3_6));
         }
 

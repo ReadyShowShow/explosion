@@ -23,7 +23,7 @@
 
     <TextView
         android:id="@+id/item_shorthand_phrase_detail"
-        android:layout_width="145dp"
+        android:layout_width="75dp"
         android:layout_height="match_parent"
         android:background="@color/c3_7"
         android:gravity="center"
@@ -33,11 +33,11 @@
 
     <TextView
         android:id="@+id/item_shorthand_difficult"
-        android:layout_width="212dp"
+        android:layout_width="106dp"
         android:layout_height="match_parent"
         android:background="@color/c2_4"
         android:gravity="center"
-        android:text="设为难词"
+        android:text="汇入难词"
         android:textColor="@color/c4_1"
         android:textSize="@dimen/t1" />
 </LinearLayout>

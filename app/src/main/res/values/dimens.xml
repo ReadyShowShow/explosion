@@ -19,14 +19,14 @@
     <!-- 全局的水平边距 -->
     <dimen name="global_margin_horizontal">15dp</dimen>
     <!-- 字体 -->
-    <dimen name="t1">36sp</dimen>
-    <dimen name="t2">34.66sp</dimen>
-    <dimen name="t3">32sp</dimen>
-    <dimen name="t4">30sp</dimen>
-    <dimen name="t5">28sp</dimen>
-    <dimen name="t6">26sp</dimen>
-    <dimen name="t7">24sp</dimen>
-    <dimen name="t8">22sp</dimen>
-    <dimen name="t9">20sp</dimen>
-    <dimen name="t10">18sp</dimen>
+    <dimen name="t1">24sp</dimen>
+    <dimen name="t2">22sp</dimen>
+    <dimen name="t3">21sp</dimen>
+    <dimen name="t4">20sp</dimen>
+    <dimen name="t5">19sp</dimen>
+    <dimen name="t6">18sp</dimen>
+    <dimen name="t7">17sp</dimen>
+    <dimen name="t8">16sp</dimen>
+    <dimen name="t9">15sp</dimen>
+    <dimen name="t10">14sp</dimen>
 </resources>

@@ -26,14 +26,10 @@ public class WordItemViewModel {
     private String chinese;
     private boolean selected;
     private boolean showPhrase;
-    private boolean isFamiliar = false;
 
-    public WordItemViewModel(String english, String chinese, boolean selected, boolean showPhrase, boolean isFamiliar) {
+    public WordItemViewModel(String english, String chinese) {
         this.english = english;
         this.chinese = chinese;
-        this.selected = selected;
-        this.showPhrase = showPhrase;
-        this.isFamiliar = isFamiliar;
     }
 
     public String getEnglish() {
@@ -66,13 +62,5 @@ public class WordItemViewModel {
 
     public void setShowPhrase(boolean showPhrase) {
         this.showPhrase = showPhrase;
-    }
-
-    public boolean isFamiliar() {
-        return isFamiliar;
-    }
-
-    public void setFamiliar(boolean familiar) {
-        isFamiliar = familiar;
     }
 }
